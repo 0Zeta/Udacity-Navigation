@@ -32,8 +32,8 @@ The task is episodic, and in order to solve the environment, the agent must get 
     
     (_For Windows users_) Check out [this link](https://support.microsoft.com/en-us/help/827218/how-to-determine-whether-a-computer-is-running-a-32-bit-version-or-64) if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
 
-3. Place the file in this GitHub repository and unzip (or decompress) the file. Then rename the folder to 'Banana'. (Now 'Banana/Banana.exe' should exist.)
+3. Place the file in this GitHub repository and unzip (or decompress) the file. Then rename the folder to `Banana`. (Now `Banana/Banana.exe` should exist.)
 
 ### Instructions
  
- Simply execute the cells in `training.ipynb` to get started with training the agent!
+ Simply execute the cells in `training.ipynb` to get started with training the agent or simply execute `demonstration.ipynb` for a demonstration of the trained agent.
