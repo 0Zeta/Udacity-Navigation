@@ -2,7 +2,8 @@
 
 ## Implementation
 The environment was solved using a deep reinforcement learning agent. The implementation can be found in the `navigation`-directory.
-`agent.py` contains the rl-agent and `model.py` contains the neural network used as an estimator.
+`agent.py` contains the rl-agent and `model.py` contains the neural network used as an estimator. A lot of the code was taken
+from the Udacity DQN-gym exercise and adapted to the needs of this problem.
 
 ### Learning algorithm
 Double DQN was used as the learning algorithm for the agent.
@@ -27,8 +28,11 @@ The following hyperparameters were used:
 * epsilon decay factor: 0.995
 
 ### Neural network
-The model used as the q-value function estimator is a simple feedforward fully-connected neural network with 4 layers with
-37, 196, 128 and 64 neurons.
+The model used as the q-value function estimator is a simple feedforward fully-connected neural network with 4 layers.
+* Input layer: 37 (input) neurons (the state size)
+* 1st hidden layer: 196 neurons
+* 2nd hidden layer: 128 neurons
+* output layer: 4 neurons (1 for each action)
 
 ## Results
 The agent was able to solve the environment after 440 episodes achieving an average score of 13.08 over the last 100 episodes
