@@ -8,10 +8,11 @@ The environment was solved using a deep reinforcement learning agent. The implem
 Double DQN was used as the learning algorithm for the agent.
 Each training episode the experience (state, action, reward, next state) the agent gained following an epsilon-greedy policy was stored.
 Then every four training steps the agent learned from a random sample from the stored experience. It learned by approximating the optimal
-q-value function (mapping a state to the expected returns of each possible action). The [Double DQN](https://arxiv.org/abs/1509.06461)
-algorithm was used instead of the normal DQN approach to improve the results of the agent. Therefore the estimate of the action expected to be optimal
-for the next state that is used in the Q-learning formula is made by a fixed target network while the action itself is chosen
-by the local network.
+q-value function (mapping a state to the expected returns of each possible action). The current estimate of a q-value is
+updated by moving it towards the gained reward + the discounted estimate of the max q-value of all actions possible in the next state.
+The [Double DQN](https://arxiv.org/abs/1509.06461) algorithm was used instead of the normal DQN approach to improve the results of the agent. 
+Therefore the estimate of the action expected to be optimal for the next state that is used in the Q-learning formula is 
+made by a fixed target network while the action itself is chosen by the local network.
 
 ### hyperparameters
 The following hyperparameters were used:
