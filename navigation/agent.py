@@ -86,8 +86,11 @@ class Agent(object):
         """
         states, actions, rewards, next_states, dones = experiences
 
-        # Get max predicted Q values (for next states) from target model
-        Q_targets_next = self.qnetwork_target(next_states).detach().max(1)[0].unsqueeze(1)
+        # Double Q-Learning
+        # Get the indices of the max predicted Q values (for next states) from the local model
+        max_Q_local_next = self.qnetwork_local(next_states).detach().argmax(1)[0].unsqueeze(1)
+        # Get the expected value of the actions selected by the local network from the target network
+        Q_targets_next = self.qnetwork_target(next_states).detach().gather(dim=1)[max_Q_local_next]
         # Compute Q targets for current states
         Q_targets = rewards + (gamma * Q_targets_next * (1 - dones))
 
@@ -154,7 +157,7 @@ class ReplayBuffer:
         dones = torch.from_numpy(np.vstack([e.done for e in experiences if e is not None]).astype(np.uint8)).float().to(
             device)
 
-        return (states, actions, rewards, next_states, dones)
+        return states, actions, rewards, next_states, dones
 
     def __len__(self):
         """Return the current size of internal memory."""
